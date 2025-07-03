@@ -1,0 +1,15 @@
+%% Преамбула TeX-файла
+
+% 1. Стиль и язык
+\documentclass[utf8x, 14pt]{G7-32} % Стиль (по умолчанию будет 14pt)
+\usepackage{st-bpi}
+\usepackage{title-page-diplom}
+\usepackage{import}
+
+\subimport{../document/}{preamble}
+
+\begin{document} % преамбула документа
+    \graphicspath{{../Source/img/}{../document}}    % расположение рисунков 
+    \subimport{../document/}{documentMain.tex}    
+
+\end{document}

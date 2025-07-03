@@ -1,0 +1,174 @@
+\usepackage{tabularray}     
+% https://ctan.math.illinois.edu/macros/latex/contrib/tabularray/tabularray.pdf
+
+% определение переменных для составных названий (caption)
+\DeclareTblrTemplate{caption-tag}{default}                  
+    {\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyra
+    \space
+    \thetable}
+    
+\DeclareTblrTemplate{caption-tag}{middle} 
+    {\CYRP\cyrr\cyro\cyrd\cyro\cyrl\cyrzh\cyre\cyrn\cyri\cyre
+    \space
+    \cyrt\cyra\cyrb\cyrl\cyri\cyrc\cyrery
+    \space
+    \thetable}
+    
+\DeclareTblrTemplate{caption-tag}{end} 
+  {\CYRO\cyrk\cyro\cyrn\cyrch\cyra\cyrn\cyri\cyre
+    \space
+    \cyrt\cyra\cyrb\cyrl\cyri\cyrc\cyrery
+    \space
+    \thetable}
+    % {\CYRO\cyrk\cyro\cyrn\cyrch\cyra\cyrn\cyri\cyre
+    % \space
+    % \cyrt\cyra\cyrb\cyrl\cyri\cyrc\cyrery
+    % \space
+    % \thetable }
+    
+\DeclareTblrTemplate{caption-sep}{default}
+    {\space---\enskip}
+    
+\DeclareTblrTemplate{caption-text}{default}
+    {\InsertTblrText{caption}}
+
+% определение заголовков (caption)
+\DeclareTblrTemplate{caption}{first}{
+    \UseTblrTemplate{caption-tag}{default}
+    \UseTblrTemplate{caption-sep}{default}
+    \UseTblrTemplate{caption-text}{default}
+} 
+\DeclareTblrTemplate{caption}{middle}{    
+    \UseTblrTemplate{caption-tag}{middle} 
+}
+\DeclareTblrTemplate{caption}{end}{    
+    \UseTblrTemplate{caption-tag}{end} 
+}
+
+% Настройка head-ов
+\DeclareTblrTemplate{firsthead}{default}{
+    \UseTblrTemplate{caption}{first}
+    \TabTopLine{0.5}     
+}
+\DeclareTblrTemplate{middlehead}{default}{
+    \UseTblrTemplate{caption}{middle}
+    \TabTopLine{0.5}
+}
+\DeclareTblrTemplate{lasthead}{default}{    
+    \UseTblrTemplate{caption}{end}
+    \TabTopLine{0.5}
+}
+% Пустой foot для продолжения 
+\DeclareTblrTemplate{contfoot}{default}{}
+\DefTblrTemplate{lastfoot}{default}{
+  \TabBottomLine{0.5}
+}
+
+
+\newcommand\TabTopLine[1]{
+    \vskip 6pt 
+    \hrule height #1pt width \tablewidth
+    \vskip -6pt 
+}
+
+\newcommand\TabBottomLine[1]{
+    \vskip -#1pt 
+  \hrule height #1pt width \tablewidth
+  }
+
+\DeclareTblrTemplate{lasthead}{ConTheme}{    
+    \UseTblrTemplate{caption}{middle}
+    \TabTopLine{0.5}
+    }
+\NewTblrTheme{twoPageTheme}{   
+    \SetTblrTemplate{lasthead}{ConTheme}
+}
+% \begin{longtblr}[
+%     caption = {Операции с последовательностями},
+%     label = {tab:test},
+%     ]{
+%     colspec = {|X|X|X|}, 
+%     rowhead = 1,
+%     hline{2-Y} = {solid},
+%     }
+% func & desc & exmaple \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% Alpha & Beta & Gamma \\
+% Epsilon & Zeta & Eta \\
+% Iota & Kappa & Lambda \\
+% Nu & Xi & Omicron \\
+% Rho & Sigma & Tau \\
+% Phi & Chi & Psi \\
+% \end{longtblr}

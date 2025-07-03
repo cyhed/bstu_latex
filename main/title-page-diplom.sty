@@ -1,0 +1,162 @@
+\ProvidesPackage{title-page-diplom}[2025 Золотов Владислав (cyhed)]
+\RequirePackage{lastpage}
+
+\newcommand\Diplom@Ministry{
+    % \CYRМ\cyri\cyrn\cyri\cyrs\cyrt\cyre\cyrr\cyrs\cyrt\cyrv\cyro~
+    Министерство образования Республики Беларусь
+}
+\newcommand\Diplom@Institution{
+    Учреждение образования
+}
+\newcommand\Diplom@Department{    
+    Кафедра
+}
+
+\newcommand\Diplom@BossPost{\CYRD\CYRO\CYRL\CYRZH\CYRN\CYRO\CYRS\CYRT\CYRSFTSN}
+\newcommand\Diplom@BossName{\CYRF.~\CYRI.~\CYRO}
+
+
+\newcommand\Diplom@Year{\the\year}
+
+\newcommand\Diplom@Otchet{%
+\small\CYRP\CYRO\CYRYA\CYRS\CYRN\CYRI\CYRT\CYRE\CYRL\CYRSFTSN\CYRN\CYRA\CYRYA{} 
+\CYRZ\CYRA\CYRP\CYRI\CYRS\CYRK\CYRA{} 
+\CYRK{} 
+}
+\newcommand\Diplom@Code{\CYRK\cyro\cyrd}
+
+\newcommand\Diplom@Supervisor{\CYRF.~\CYRI.~\CYRO}
+\newcommand\Diplom@EconomicSectionConsultant{\CYRF.~\CYRI.~\CYRO}
+\newcommand\Diplom@NonCoreSectionConsultant{\CYRF.~\CYRI.~\CYRO}
+\newcommand\Diplom@Executor{\CYRF.~\CYRI.~\CYRO}
+\newcommand\Diplom@NormControl{\CYRF.~\CYRI.~\CYRO}
+
+\newcommand\Diplom@Town{\cyrg\cyro\cyrr\cyro\cyrd}
+
+\newcommand\Diplom@Theme{\cyrt\cyre\cyrm\cyra}
+
+\newcommand\Diplom@ProgrammSize{(X кБайт)}
+\newif\if@apendixprogrammsize \@apendixprogrammsizefalse
+
+\newif\if@apendix \@apendixfalse
+
+\newcommand\diplomTitlePage[0]{
+\thispagestyle{empty}
+\begin{centering}
+\large
+\if@apendix\else
+\Diplom@Ministry  
+\fi
+
+\Diplom@Institution   
+
+\Diplom@Department
+
+\normalsize%
+\vfill
+\if@apendix\else
+\begin{tabular}{p{85mm}p{87mm}}
+~ & \textit{К защите допускаю}\\
+~ & \Diplom@BossPost \\
+~ & \underline{\hspace{3cm}} \Diplom@BossName \\
+~ & <<\underline{\hspace{0.8cm}}>> \underline{\hspace{2cm}} \Diplom@Year г. \\
+\end{tabular}
+\fi
+\vfill
+\vfill
+
+\large\textbf{\Diplom@Theme}\normalsize
+
+\vspace{8mm}
+\small\Diplom@Otchet\normalsize
+
+% \vfill
+ \vspace{8mm}
+\large\textbf{\Diplom@Code}\normalsize
+
+\vfill
+ \large\CYRL\cyri\cyrs\cyrt\cyro\cyrv~  \pageref{LastPage}  \normalsize
+
+\if@apendixprogrammsize
+Объем \Diplom@ProgrammSize
+\vfill
+\fi
+
+% \vfill
+\begin{tabular*}{\textwidth}{@{}r@{\extracolsep{5cm}}l@{}}
+  \hspace{5.5cm}  & ~\\  %пустая строка для выравнивания 
+\if@apendix
+\Diplom@BossPost &  \Diplom@BossName \\
+& \\
+\fi
+Руководитель  & \Diplom@Supervisor \\
+\if@apendix
+& \\
+\else
+Консультант\vspace{-1.5mm}\\ по экономическому разделу & \Diplom@EconomicSectionConsultant \\
+Консультант\vspace{-1.5mm}\\ по неосновным разделам  &  \Diplom@NonCoreSectionConsultant \\
+\fi
+Выполнил & \Diplom@Executor \\
+\if@apendix
+& \\
+\else
+\fi
+Нормоконтроль & \Diplom@NormControl \\
+\if@apendix\else
+Рецензент & ~ \\
+\fi
+\end{tabular*}
+\vfill
+\vfill
+\vfill
+
+ \Diplom@Town~\Diplom@Year
+
+\end{centering}
+}
+% основные надписи для титульной таблицы диплома
+\newcommand\SetDiplomThemeName[1]{\renewcommand\Diplom@Theme{#1}}
+\newcommand\GetDiplomThemeName[0]{\Diplom@Theme}
+
+\newcommand\SetDiplomOrgLongName[3]{
+\renewcommand\Diplom@Ministry{#1}\renewcommand\Diplom@Institution{#2}\renewcommand\Diplom@Department{#3}
+}
+\newcommand\SetDiplomBoss[2]{\renewcommand\Diplom@BossPost{#1}\renewcommand\Diplom@BossName{#2}}
+\newcommand\SetDiplomYear[1]{\renewcommand\Diplom@Year{#1}}
+
+\newcommand\SetDiplomOtchet[1]{\renewcommand\Diplom@Otchet{#1}}
+
+\newcommand\SetDiplomCode[1]{\renewcommand\Diplom@Code{#1}}
+\newcommand\GetDiplomCode[0]{\Diplom@Code}
+
+\newcommand\SetDiplomSupervisor[1]
+    {\renewcommand\Diplom@Supervisor{#1}}
+\newcommand\SetDiplomEconomicSectionConsultant[1]
+    {\renewcommand\Diplom@EconomicSectionConsultant{#1}}
+\newcommand\SetDiplomNonCoreSectionConsultant[1]
+    {\renewcommand\Diplom@NonCoreSectionConsultant{#1}}
+\newcommand\SetDiplomExecutor[1]
+    {\renewcommand\Diplom@Executor{#1}}
+\newcommand\SetDiplomNormControl[1]
+    {\renewcommand\Diplom@NormControl{#1}}
+
+\newcommand\SetDiplomTown[1]{\renewcommand\Diplom@Town{#1}}
+
+% для приложений
+\newcommand\SetDiplomProgrammSize[1]{
+    \@apendixprogrammsizetrue
+    \renewcommand\Diplom@ProgrammSize{#1}}
+
+\newcommand\SetDiplomTitlePageApendixStyle{
+    \@apendixtrue
+}
+
+\def\ps@diplomHeadingsWithCode{%
+    \let\@oddfoot\@empty
+    \let\@evenfoot\@empty
+    \def\@evenhead{\hfil \Diplom@Code \hfil \thepage}%
+    \def\@oddhead{\hfil \Diplom@Code \hfil \thepage}%
+    \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
+    \let\sectionmark\@gobble
+}

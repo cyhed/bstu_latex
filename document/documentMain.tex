@@ -1,0 +1,59 @@
+\newgeometry{left=30mm, top=10mm, bottom=10mm, right=10mm}
+\diplomTitlePage
+\clearpage
+\restoregeometry
+
+
+
+\frontmatter % выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы: реферат, введение, глоссарий, сокращения и прочее.
+\newpage ~ % для бланка задания
+
+
+\newpage 
+\subimport{../document/chapter}{0-annotacia.tex}
+ 
+
+% \newgeometry{left=25mm, top=15mm, bottom=40mm, right=10mm}
+\textheight = 652pt % настройка высоты текста, необходима для незалазанья рамки на текст
+% всякие оглавления
+\tableofcontents    % Содержание
+% \restoregeometry
+
+\textheight = 720pt % настройка высоты текста, возвращаем обратно
+
+
+% \listoffigures      % Список иллюстраций
+% \listoftables       % Список таблиц
+
+
+
+
+
+\subimport{../document/chapter}{0-introduction}
+
+
+\mainmatter % нумерованная часть документа
+
+
+\subimport{../document/chapter}{10-раздел первый}
+
+\subimport{../document/chapter}{20-раздел два}
+
+\subimport{../document/chapter}{30-раздел три}
+
+\subimport{../document/chapter}{40-раздел 4.tex}
+
+
+
+
+
+\backmatter %% Здесь заканчивается нумерованная часть документа и начинаются ссылки и
+           
+
+\input{../document/chapter/999-conclusion}  %% заключение
+
+\subimport{../document/biblio}{biblio}
+
+
+
+

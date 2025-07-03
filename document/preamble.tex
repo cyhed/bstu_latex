@@ -1,0 +1,193 @@
+\sloppy % настройка переноса слов
+
+
+% Добавляем гипертекстовое оглавление в PDF и метаданные
+\usepackage[
+bookmarks=true, colorlinks=true, unicode=true,
+urlcolor=black,linkcolor=black, anchorcolor=black,
+citecolor=black, menucolor=black, filecolor=black,
+pdfstartpage=1,
+    pdftex,
+            pdfauthor={\CYRZ\cyro\cyrl\cyro\cyrt\cyro\cyrv\CYRV\CYRV\ \CYRM\CYRS7},
+            pdftitle={\CYRD\CYRI\CYRP\CYRL\CYRO\CYRM\ \the\year },
+            pdfsubject={},
+            pdfkeywords={},            
+]{hyperref}
+%% возможные значения по умолнанию
+% Приложение:           pdfproducer={pdfTeX-1.40.25},
+% Производитель PDF:    pdfcreator={LaTeX with hyperref}
+%%
+\urlstyle{same} % Текст ссылки имеет обычный формат шрифта
+
+% Изменение начертания шрифта --- после чего выглядит таймсоподобно.
+% apt-get install scalable-cyrfonts-tex
+
+\IfFileExists{cyrtimes.sty}
+    {
+        \usepackage{cyrtimespatched}
+    }
+    {
+        % А если Times нету, то будет CM...
+    }
+
+
+\usepackage{graphicx}   % Пакет для включения рисунков
+\DeclareGraphicsExtensions{.jpg,.pdf,.png}
+% \graphicspath{{Source/img/}}    % расположение рисунков % было перенесено в main
+\usepackage{float} % Для опции фигур [H]
+
+\usepackage{subfigure} %https://latex-tutorial.com/subfigure-latex/
+%%
+%Необходима для правильности отображения ссылок на на subfigure при нумерации figure по главам
+% https://tex.stackexchange.com/questions/115712/figure-numbering-with-section-number-problem-with-subfigure
+\makeatletter 
+\renewcommand\p@subfigure{\thefigure}
+\makeatother
+%%
+
+% Установка мм как меры длины для псевдорисунков
+\unitlength=1mm 
+
+
+% Произвольная нумерация списков.
+\usepackage{enumerate}
+
+
+% списки которые не зависят от linespread
+%определить среду для компактного перечисления
+\newenvironment{cenumerate}{
+\setlength{\parskip}{0pt}
+\begin{enumerate}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{1mm}
+}
+{\end{enumerate}\setlength{\parskip}{11pt}}
+%определить среду для компактного перечисления
+\newenvironment{citemize}{
+\setlength{\parskip}{0pt}
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{1mm}
+}
+{\end{itemize}\setlength{\parskip}{11pt}}
+
+
+\setcounter{tocdepth}{2} %Подробность оглавления
+%5 это chapter, section, subsection, subsubsection и paragraph
+%4 это chapter, section, subsection и subsubsection
+%3 это chapter, section, и subsection
+%2 это chapter и section
+%1 это chapter.
+%0 ничего
+
+
+% С такими полями оно работает по-умолчанию:
+%\RequirePackage[left=20mm,right=10mm,top=20mm,bottom=20mm,headsep=0pt]{geometry}
+\geometry{right=10mm}
+\geometry{left=25mm} 
+\geometry{bottom=25mm}
+\geometry{top=15mm}
+\geometry{headsep=5mm} % чтоб код зачетки не налазил на главы
+
+
+% чтобы тест не залазил на рамку
+\textheight = 710pt % настройка высоты текста, 
+
+% Настройки стиля ГОСТ 7-32
+% Для начала определяем, хотим мы или нет, чтобы рисунки и таблицы нумеровались в пределах раздела, или нам нужна сквозная нумерация.
+\EqInChapter % формулы будут нумероваться в пределах раздела
+\TableInChapter % таблицы будут нумероваться в пределах раздела
+\PicInChapter % рисунки будут нумероваться в пределах раздела
+%% Если хотите сквозную нумерацию, закомментируйте соответствующую команду
+
+%% настройка листинга
+\usepackage{listings}
+
+\usepackage{lstautogobble} % позволяет убирать ведущие символы
+\lstdefinestyle{picLstStyle}{
+    language=[Sharp]C, % язык программирования
+    frame=single, % установка рамки
+    xleftmargin=1mm, % отступ слева
+    xrightmargin=0mm, % оступ справа
+    breaklines=true, % переносить строки
+    mathescape=false, % запрет математического режима
+    extendedchars=false,
+    framesep=2pt,
+    keepspaces=true,
+    basicstyle=\normalsize,
+    aboveskip=1.5em,
+}
+
+\lstdefinestyle{LstStyle}{
+    language=[Sharp]C, % язык программирования
+    frame=none, % без рамки
+    xleftmargin=1mm, % отступ слева
+    xrightmargin=1mm, % оступ справа
+    breaklines=true, % переносить строки
+    extendedchars=false,
+    keepspaces=true,
+    basicstyle=\normalsize,
+    keywordstyle=\normalsize
+}
+% Возможные парамеметры basicstyle , настраиваюшие размер шрифта
+%\tiny	
+%\scriptsize	
+%\footnotesize	
+%\small	
+%\normalsize	
+%\large
+%\Large	
+%\LARGE	
+%\huge	
+%\Huge	
+\lstset{style=LstStyle}
+%%
+
+
+% настройка отображения источников \nocite означает что они будут добавленны даже если в тексте не использовались ссылки.
+% если закомментировать, то отображаться будут только те источники на которых ссылались
+% \nocite{*}
+%%
+
+
+% Расскометируйте строчку ниже если хотите добавить фон в весь файл
+% Тогда каждой странице исходного файла будет соответсвовать страница файла с фоном
+% Размер файла с фонами, в страницах, должен быть >= размеру  исходного файла
+% Если будет меньше произойдет фатальная ошибка сборки
+% Данный макрос взят отсюда: https://habr.com/ru/articles/163315/
+%  \newcommand{\overlaypass}
+
+\usepackage{eso-pic}
+
+\ifdefined\overlaypass
+    \newcounter{overlaypage}
+    \setcounter{overlaypage}{1}
+    \AddToShipoutPicture{%
+        \AtPageLowerLeft{% начало координат левый нижний угол
+            \put(0,0){% возможность сдвига вставки
+                \includegraphics[page=\arabic{overlaypage}]
+                    {../Source/background/background.pdf}%
+                \stepcounter{overlaypage}
+            }
+        }
+    }
+\fi
+%%
+
+
+% установка стиля страниц
+\pagestyle{empty}
+%%
+
+
+
+% По оформлению в многостраничной таблице на последней
+% странице заголовок должен иметь отдельное оформление (Окончание таблицы N)
+% а также последняя строка на странице не должна закрываться
+% если таблица продолжится на следующей.
+\subimport{../document/}{preamble-longtable.tex}
+
+% Задание полей для титульника
+\subimport{./}{title-page-preamble.tex}

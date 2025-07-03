@@ -1,0 +1,14 @@
+/output
+*.aux
+*.bbl
+*.blg
+*.fls
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.synctex.gz
+*.lot
+*.lof
+*.synctex(busy)
+/main/*.pdf
